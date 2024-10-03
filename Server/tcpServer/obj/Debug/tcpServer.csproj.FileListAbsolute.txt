@@ -1,0 +1,14 @@
+C:\Users\mehrang\Downloads\Compressed\TcpServer-src\tcpServer\bin\Debug\tcpServer.dll
+C:\Users\mehrang\Downloads\Compressed\TcpServer-src\tcpServer\bin\Debug\tcpServer.pdb
+C:\Users\mehrang\Downloads\Compressed\TcpServer-src\tcpServer\obj\Debug\tcpServer.csprojResolveAssemblyReference.cache
+C:\Users\mehrang\Downloads\Compressed\TcpServer-src\tcpServer\obj\Debug\tcpServer.TcpServer.resources
+C:\Users\mehrang\Downloads\Compressed\TcpServer-src\tcpServer\obj\Debug\tcpServer.csproj.GenerateResource.Cache
+C:\Users\mehrang\Downloads\Compressed\TcpServer-src\tcpServer\obj\Debug\tcpServer.dll
+C:\Users\mehrang\Downloads\Compressed\TcpServer-src\tcpServer\obj\Debug\tcpServer.pdb
+E:\toopeto\TcpServer-src\tcpServer\bin\Debug\tcpServer.dll
+E:\toopeto\TcpServer-src\tcpServer\bin\Debug\tcpServer.pdb
+E:\toopeto\TcpServer-src\tcpServer\obj\Debug\tcpServer.csprojResolveAssemblyReference.cache
+E:\toopeto\TcpServer-src\tcpServer\obj\Debug\tcpServer.TcpServer.resources
+E:\toopeto\TcpServer-src\tcpServer\obj\Debug\tcpServer.csproj.GenerateResource.Cache
+E:\toopeto\TcpServer-src\tcpServer\obj\Debug\tcpServer.dll
+E:\toopeto\TcpServer-src\tcpServer\obj\Debug\tcpServer.pdb

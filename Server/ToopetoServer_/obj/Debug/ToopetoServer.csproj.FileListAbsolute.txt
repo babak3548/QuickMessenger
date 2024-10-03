@@ -1,0 +1,10 @@
+C:\Users\mehrang\Downloads\Compressed\TcpServer-src\ToopetoServer\bin\Debug\ToopetoServer.dll.config
+C:\Users\mehrang\Downloads\Compressed\TcpServer-src\ToopetoServer\bin\Debug\ToopetoServer.dll
+C:\Users\mehrang\Downloads\Compressed\TcpServer-src\ToopetoServer\bin\Debug\ToopetoServer.pdb
+C:\Users\mehrang\Downloads\Compressed\TcpServer-src\ToopetoServer\bin\Debug\EntityFramework.dll
+C:\Users\mehrang\Downloads\Compressed\TcpServer-src\ToopetoServer\bin\Debug\tcpServer.dll
+C:\Users\mehrang\Downloads\Compressed\TcpServer-src\ToopetoServer\bin\Debug\tcpServer.pdb
+C:\Users\mehrang\Downloads\Compressed\TcpServer-src\ToopetoServer\bin\Debug\EntityFramework.xml
+C:\Users\mehrang\Downloads\Compressed\TcpServer-src\ToopetoServer\obj\Debug\ToopetoServer.csprojResolveAssemblyReference.cache
+C:\Users\mehrang\Downloads\Compressed\TcpServer-src\ToopetoServer\obj\Debug\ToopetoServer.dll
+C:\Users\mehrang\Downloads\Compressed\TcpServer-src\ToopetoServer\obj\Debug\ToopetoServer.pdb

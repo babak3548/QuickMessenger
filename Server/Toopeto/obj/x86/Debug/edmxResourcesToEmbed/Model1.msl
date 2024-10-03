@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="tupetooModelStoreContainer" CdmEntityContainer="tupetooEntities1">
+    <EntitySetMapping Name="Contacts">
+      <EntityTypeMapping TypeName="tupetooModel.Contact">
+        <MappingFragment StoreEntitySet="Contact">
+          <ScalarProperty Name="nearbySearch" ColumnName="nearbySearch" />
+          <ScalarProperty Name="age" ColumnName="age" />
+          <ScalarProperty Name="sex" ColumnName="sex" />
+          <ScalarProperty Name="position" ColumnName="position" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="Presence" ColumnName="Presence" />
+          <ScalarProperty Name="avatarUrl" ColumnName="avatarUrl" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="numberPhone" ColumnName="numberPhone" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Groups">
+      <EntityTypeMapping TypeName="tupetooModel.Group">
+        <MappingFragment StoreEntitySet="Group">
+          <ScalarProperty Name="fk_parentName" ColumnName="fk_parentName" />
+          <ScalarProperty Name="position" ColumnName="position" />
+          <ScalarProperty Name="fk_ContactCretor" ColumnName="fk_ContactCretor" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="subject" ColumnName="subject" />
+          <ScalarProperty Name="groupName" ColumnName="groupName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Group_Contact">
+      <EntityTypeMapping TypeName="tupetooModel.Group_Contact">
+        <MappingFragment StoreEntitySet="Group_Contact">
+          <ScalarProperty Name="levelAccess" ColumnName="levelAccess" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="fkGroup" ColumnName="fkGroup" />
+          <ScalarProperty Name="Fk_Contact" ColumnName="Fk_Contact" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Messages">
+      <EntityTypeMapping TypeName="tupetooModel.Message">
+        <MappingFragment StoreEntitySet="Message">
+          <ScalarProperty Name="fk_Contact_receiver" ColumnName="fk_Contact_receiver" />
+          <ScalarProperty Name="fkGroup" ColumnName="fkGroup" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="fk_Contact_sender" ColumnName="fk_Contact_sender" />
+          <ScalarProperty Name="text" ColumnName="text" />
+          <ScalarProperty Name="url" ColumnName="url" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LikeCommands">
+      <EntityTypeMapping TypeName="tupetooModel.LikeCommand">
+        <MappingFragment StoreEntitySet="LikeCommand">
+          <ScalarProperty Name="isLike" ColumnName="isLike" />
+          <ScalarProperty Name="fk_userName" ColumnName="fk_userName" />
+          <ScalarProperty Name="fk_message" ColumnName="fk_message" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

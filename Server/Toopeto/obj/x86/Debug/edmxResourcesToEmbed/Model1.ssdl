@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="tupetooModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Contact">
+    <Key>
+      <PropertyRef Name="userName" />
+    </Key>
+    <Property Name="userName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="numberPhone" Type="nchar" MaxLength="15" />
+    <Property Name="email" Type="nvarchar" MaxLength="100" />
+    <Property Name="avatarUrl" Type="nvarchar" MaxLength="100" />
+    <Property Name="Presence" Type="tinyint" />
+    <Property Name="password" Type="nvarchar" MaxLength="100" />
+    <Property Name="date" Type="datetime" />
+    <Property Name="position" Type="geography" />
+    <Property Name="sex" Type="tinyint" />
+    <Property Name="age" Type="tinyint" />
+    <Property Name="nearbySearch" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Group">
+    <Key>
+      <PropertyRef Name="groupName" />
+    </Key>
+    <Property Name="groupName" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="subject" Type="nvarchar(max)" />
+    <Property Name="type" Type="tinyint" />
+    <Property Name="date" Type="datetime" />
+    <Property Name="fk_ContactCretor" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="position" Type="geography" />
+    <Property Name="fk_parentName" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Group_Contact">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Fk_Contact" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="fkGroup" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="date" Type="datetime" />
+    <Property Name="levelAccess" Type="tinyint" />
+  </EntityType>
+  <EntityType Name="LikeCommand">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fk_message" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="fk_userName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="isLike" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Message">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="type" Type="tinyint" Nullable="false" />
+    <Property Name="url" Type="nvarchar" MaxLength="100" />
+    <Property Name="text" Type="nvarchar(max)" />
+    <Property Name="fk_Contact_sender" Type="nvarchar" MaxLength="50" />
+    <Property Name="Status" Type="tinyint" Nullable="false" />
+    <Property Name="date" Type="datetime" />
+    <Property Name="fkGroup" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="fk_Contact_receiver" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_Group_Contact">
+    <End Role="Contact" Type="Self.Contact" Multiplicity="1" />
+    <End Role="Group" Type="Self.Group" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contact">
+        <PropertyRef Name="userName" />
+      </Principal>
+      <Dependent Role="Group">
+        <PropertyRef Name="fk_ContactCretor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Group_Contact_Contact">
+    <End Role="Contact" Type="Self.Contact" Multiplicity="1" />
+    <End Role="Group_Contact" Type="Self.Group_Contact" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contact">
+        <PropertyRef Name="userName" />
+      </Principal>
+      <Dependent Role="Group_Contact">
+        <PropertyRef Name="Fk_Contact" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Group_Contact_Group">
+    <End Role="Group" Type="Self.Group" Multiplicity="1" />
+    <End Role="Group_Contact" Type="Self.Group_Contact" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Group">
+        <PropertyRef Name="groupName" />
+      </Principal>
+      <Dependent Role="Group_Contact">
+        <PropertyRef Name="fkGroup" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Message_Contact">
+    <End Role="Contact" Type="Self.Contact" Multiplicity="0..1" />
+    <End Role="Message" Type="Self.Message" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contact">
+        <PropertyRef Name="userName" />
+      </Principal>
+      <Dependent Role="Message">
+        <PropertyRef Name="fk_Contact_sender" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Message_Group">
+    <End Role="Group" Type="Self.Group" Multiplicity="1" />
+    <End Role="Message" Type="Self.Message" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Group">
+        <PropertyRef Name="groupName" />
+      </Principal>
+      <Dependent Role="Message">
+        <PropertyRef Name="fkGroup" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="tupetooModelStoreContainer">
+    <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Group" EntityType="Self.Group" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Group_Contact" EntityType="Self.Group_Contact" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LikeCommand" EntityType="Self.LikeCommand" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Message" EntityType="Self.Message" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Group_Contact" Association="Self.FK_Group_Contact">
+      <End Role="Contact" EntitySet="Contact" />
+      <End Role="Group" EntitySet="Group" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Group_Contact_Contact" Association="Self.FK_Group_Contact_Contact">
+      <End Role="Contact" EntitySet="Contact" />
+      <End Role="Group_Contact" EntitySet="Group_Contact" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Group_Contact_Group" Association="Self.FK_Group_Contact_Group">
+      <End Role="Group" EntitySet="Group" />
+      <End Role="Group_Contact" EntitySet="Group_Contact" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Message_Contact" Association="Self.FK_Message_Contact">
+      <End Role="Contact" EntitySet="Contact" />
+      <End Role="Message" EntitySet="Message" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Message_Group" Association="Self.FK_Message_Group">
+      <End Role="Group" EntitySet="Group" />
+      <End Role="Message" EntitySet="Message" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

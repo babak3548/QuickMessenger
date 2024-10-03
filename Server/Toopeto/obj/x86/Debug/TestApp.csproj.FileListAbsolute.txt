@@ -1,0 +1,10 @@
+C:\Users\mehrang\Downloads\Compressed\TcpServer-src\Test App\bin\Debug\tcpServerTester.exe
+C:\Users\mehrang\Downloads\Compressed\TcpServer-src\Test App\bin\Debug\tcpServerTester.pdb
+C:\Users\mehrang\Downloads\Compressed\TcpServer-src\Test App\bin\Debug\tcpServer.dll
+C:\Users\mehrang\Downloads\Compressed\TcpServer-src\Test App\bin\Debug\tcpServer.pdb
+C:\Users\mehrang\Downloads\Compressed\TcpServer-src\Test App\obj\x86\Debug\TestApp.csprojResolveAssemblyReference.cache
+C:\Users\mehrang\Downloads\Compressed\TcpServer-src\Test App\obj\x86\Debug\testerApp.frmMain.resources
+C:\Users\mehrang\Downloads\Compressed\TcpServer-src\Test App\obj\x86\Debug\testApp.Properties.Resources.resources
+C:\Users\mehrang\Downloads\Compressed\TcpServer-src\Test App\obj\x86\Debug\TestApp.csproj.GenerateResource.Cache
+C:\Users\mehrang\Downloads\Compressed\TcpServer-src\Test App\obj\x86\Debug\tcpServerTester.exe
+C:\Users\mehrang\Downloads\Compressed\TcpServer-src\Test App\obj\x86\Debug\tcpServerTester.pdb

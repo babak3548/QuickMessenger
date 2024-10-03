@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ToopetoModelStoreContainer" CdmEntityContainer="ToopetoEntities">
+    <EntitySetMapping Name="EntityRs">
+      <EntityTypeMapping TypeName="ToopetoModel.EntityR">
+        <MappingFragment StoreEntitySet="EntityR">
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="friends">
+      <EntityTypeMapping TypeName="ToopetoModel.friend">
+        <MappingFragment StoreEntitySet="friends">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Fk_User1" ColumnName="Fk_User1" />
+          <ScalarProperty Name="Fk_User2" ColumnName="Fk_User2" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Messages">
+      <EntityTypeMapping TypeName="ToopetoModel.Message">
+        <MappingFragment StoreEntitySet="Message">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="url" ColumnName="url" />
+          <ScalarProperty Name="text" ColumnName="text" />
+          <ScalarProperty Name="EntityR_fk" ColumnName="EntityR_fk" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rooms">
+      <EntityTypeMapping TypeName="ToopetoModel.Room">
+        <MappingFragment StoreEntitySet="Room">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="roomName" ColumnName="roomName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Room_User">
+      <EntityTypeMapping TypeName="ToopetoModel.Room_User">
+        <MappingFragment StoreEntitySet="Room_User">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Fk_Room" ColumnName="Fk_Room" />
+          <ScalarProperty Name="Fk_User" ColumnName="Fk_User" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="ToopetoModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

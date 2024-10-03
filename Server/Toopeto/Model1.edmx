@@ -1,0 +1,413 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="tupetooModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="userName" />
+          </Key>
+          <Property Name="userName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="numberPhone" Type="nchar" MaxLength="15" />
+          <Property Name="email" Type="nvarchar" MaxLength="100" />
+          <Property Name="avatarUrl" Type="nvarchar" MaxLength="100" />
+          <Property Name="Presence" Type="tinyint" />
+          <Property Name="password" Type="nvarchar" MaxLength="100" />
+          <Property Name="date" Type="datetime" />
+          <Property Name="position" Type="geography" />
+          <Property Name="sex" Type="tinyint" />
+          <Property Name="age" Type="tinyint" />
+          <Property Name="nearbySearch" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Group">
+          <Key>
+            <PropertyRef Name="groupName" />
+          </Key>
+          <Property Name="groupName" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="subject" Type="nvarchar(max)" />
+          <Property Name="type" Type="tinyint" />
+          <Property Name="date" Type="datetime" />
+          <Property Name="fk_ContactCretor" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="position" Type="geography" />
+          <Property Name="fk_parentName" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Group_Contact">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fk_Contact" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="fkGroup" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="date" Type="datetime" />
+          <Property Name="levelAccess" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="LikeCommand">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fk_message" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="fk_userName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="isLike" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Message">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="type" Type="tinyint" Nullable="false" />
+          <Property Name="url" Type="nvarchar" MaxLength="100" />
+          <Property Name="text" Type="nvarchar(max)" />
+          <Property Name="fk_Contact_sender" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="tinyint" Nullable="false" />
+          <Property Name="date" Type="datetime" />
+          <Property Name="fkGroup" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="fk_Contact_receiver" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Group_Contact">
+          <End Role="Contact" Type="Self.Contact" Multiplicity="1" />
+          <End Role="Group" Type="Self.Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="userName" />
+            </Principal>
+            <Dependent Role="Group">
+              <PropertyRef Name="fk_ContactCretor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Group_Contact_Contact">
+          <End Role="Contact" Type="Self.Contact" Multiplicity="1" />
+          <End Role="Group_Contact" Type="Self.Group_Contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="userName" />
+            </Principal>
+            <Dependent Role="Group_Contact">
+              <PropertyRef Name="Fk_Contact" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Group_Contact_Group">
+          <End Role="Group" Type="Self.Group" Multiplicity="1" />
+          <End Role="Group_Contact" Type="Self.Group_Contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group">
+              <PropertyRef Name="groupName" />
+            </Principal>
+            <Dependent Role="Group_Contact">
+              <PropertyRef Name="fkGroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Message_Contact">
+          <End Role="Contact" Type="Self.Contact" Multiplicity="0..1" />
+          <End Role="Message" Type="Self.Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="userName" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="fk_Contact_sender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Message_Group">
+          <End Role="Group" Type="Self.Group" Multiplicity="1" />
+          <End Role="Message" Type="Self.Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group">
+              <PropertyRef Name="groupName" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="fkGroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="tupetooModelStoreContainer">
+          <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Group" EntityType="Self.Group" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Group_Contact" EntityType="Self.Group_Contact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LikeCommand" EntityType="Self.LikeCommand" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Message" EntityType="Self.Message" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Group_Contact" Association="Self.FK_Group_Contact">
+            <End Role="Contact" EntitySet="Contact" />
+            <End Role="Group" EntitySet="Group" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Group_Contact_Contact" Association="Self.FK_Group_Contact_Contact">
+            <End Role="Contact" EntitySet="Contact" />
+            <End Role="Group_Contact" EntitySet="Group_Contact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Group_Contact_Group" Association="Self.FK_Group_Contact_Group">
+            <End Role="Group" EntitySet="Group" />
+            <End Role="Group_Contact" EntitySet="Group_Contact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Message_Contact" Association="Self.FK_Message_Contact">
+            <End Role="Contact" EntitySet="Contact" />
+            <End Role="Message" EntitySet="Message" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Message_Group" Association="Self.FK_Message_Group">
+            <End Role="Group" EntitySet="Group" />
+            <End Role="Message" EntitySet="Message" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="tupetooModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="tupetooEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Contacts" EntityType="tupetooModel.Contact" />
+          <EntitySet Name="Groups" EntityType="tupetooModel.Group" />
+          <EntitySet Name="Group_Contact" EntityType="tupetooModel.Group_Contact" />
+          <AssociationSet Name="FK_Group_Contact" Association="tupetooModel.FK_Group_Contact">
+            <End Role="Contact" EntitySet="Contacts" />
+            <End Role="Group" EntitySet="Groups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Group_Contact_Contact" Association="tupetooModel.FK_Group_Contact_Contact">
+            <End Role="Contact" EntitySet="Contacts" />
+            <End Role="Group_Contact" EntitySet="Group_Contact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Group_Contact_Group" Association="tupetooModel.FK_Group_Contact_Group">
+            <End Role="Group" EntitySet="Groups" />
+            <End Role="Group_Contact" EntitySet="Group_Contact" />
+          </AssociationSet>
+          <EntitySet Name="Messages" EntityType="tupetooModel.Message" />
+          <AssociationSet Name="FK_Message_Contact" Association="tupetooModel.FK_Message_Contact">
+            <End Role="Contact" EntitySet="Contacts" />
+            <End Role="Message" EntitySet="Messages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Message_Group" Association="tupetooModel.FK_Message_Group">
+            <End Role="Group" EntitySet="Groups" />
+            <End Role="Message" EntitySet="Messages" />
+          </AssociationSet>
+          <EntitySet Name="LikeCommands" EntityType="tupetooModel.LikeCommand" />
+          </EntityContainer>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="userName" />
+          </Key>
+          <Property Name="userName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="numberPhone" Type="String" MaxLength="15" FixedLength="true" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="avatarUrl" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Presence" Type="Byte" />
+          <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="date" Type="DateTime" Precision="3" />
+          <Property Name="position" Type="Geography" />
+          <Property Name="sex" Type="Byte" />
+          <Property Name="age" Type="Byte" />
+          <Property Name="nearbySearch" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Groups" Relationship="tupetooModel.FK_Group_Contact" FromRole="Contact" ToRole="Group" />
+          <NavigationProperty Name="Group_Contact" Relationship="tupetooModel.FK_Group_Contact_Contact" FromRole="Contact" ToRole="Group_Contact" />
+          <NavigationProperty Name="Messages" Relationship="tupetooModel.FK_Message_Contact" FromRole="Contact" ToRole="Message" />
+        </EntityType>
+        <EntityType Name="Group">
+          <Key>
+            <PropertyRef Name="groupName" />
+          </Key>
+          <Property Name="groupName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="subject" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="type" Type="Byte" />
+          <Property Name="date" Type="DateTime" Precision="3" />
+          <Property Name="fk_ContactCretor" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="position" Type="Geography" />
+          <Property Name="fk_parentName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Contact" Relationship="tupetooModel.FK_Group_Contact" FromRole="Group" ToRole="Contact" />
+          <NavigationProperty Name="Group_Contact" Relationship="tupetooModel.FK_Group_Contact_Group" FromRole="Group" ToRole="Group_Contact" />
+          <NavigationProperty Name="Messages" Relationship="tupetooModel.FK_Message_Group" FromRole="Group" ToRole="Message" />
+        </EntityType>
+        <EntityType Name="Group_Contact">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fk_Contact" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fkGroup" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="date" Type="DateTime" Precision="3" />
+          <Property Name="levelAccess" Type="Byte" />
+          <NavigationProperty Name="Contact" Relationship="tupetooModel.FK_Group_Contact_Contact" FromRole="Group_Contact" ToRole="Contact" />
+          <NavigationProperty Name="Group" Relationship="tupetooModel.FK_Group_Contact_Group" FromRole="Group_Contact" ToRole="Group" />
+        </EntityType>
+        <Association Name="FK_Group_Contact">
+          <End Type="tupetooModel.Contact" Role="Contact" Multiplicity="1" />
+          <End Type="tupetooModel.Group" Role="Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="userName" />
+            </Principal>
+            <Dependent Role="Group">
+              <PropertyRef Name="fk_ContactCretor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Group_Contact_Contact">
+          <End Type="tupetooModel.Contact" Role="Contact" Multiplicity="1" />
+          <End Type="tupetooModel.Group_Contact" Role="Group_Contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="userName" />
+            </Principal>
+            <Dependent Role="Group_Contact">
+              <PropertyRef Name="Fk_Contact" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Group_Contact_Group">
+          <End Type="tupetooModel.Group" Role="Group" Multiplicity="1" />
+          <End Type="tupetooModel.Group_Contact" Role="Group_Contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group">
+              <PropertyRef Name="groupName" />
+            </Principal>
+            <Dependent Role="Group_Contact">
+              <PropertyRef Name="fkGroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Message">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="type" Type="Byte" Nullable="false" />
+          <Property Name="url" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="fk_Contact_sender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Byte" Nullable="false" />
+          <Property Name="date" Type="DateTime" Precision="3" />
+          <Property Name="fkGroup" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="fk_Contact_receiver" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Contact" Relationship="tupetooModel.FK_Message_Contact" FromRole="Message" ToRole="Contact" />
+          <NavigationProperty Name="Group" Relationship="tupetooModel.FK_Message_Group" FromRole="Message" ToRole="Group" />
+        </EntityType>
+        <Association Name="FK_Message_Contact">
+          <End Type="tupetooModel.Contact" Role="Contact" Multiplicity="0..1" />
+          <End Type="tupetooModel.Message" Role="Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contact">
+              <PropertyRef Name="userName" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="fk_Contact_sender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Message_Group">
+          <End Type="tupetooModel.Group" Role="Group" Multiplicity="1" />
+          <End Type="tupetooModel.Message" Role="Message" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Group">
+              <PropertyRef Name="groupName" />
+            </Principal>
+            <Dependent Role="Message">
+              <PropertyRef Name="fkGroup" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="LikeCommand">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fk_message" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="fk_userName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="isLike" Type="Boolean" Nullable="false" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="tupetooModelStoreContainer" CdmEntityContainer="tupetooEntities1">
+          <EntitySetMapping Name="Contacts">
+            <EntityTypeMapping TypeName="tupetooModel.Contact">
+              <MappingFragment StoreEntitySet="Contact">
+                <ScalarProperty Name="nearbySearch" ColumnName="nearbySearch" />
+                <ScalarProperty Name="age" ColumnName="age" />
+                <ScalarProperty Name="sex" ColumnName="sex" />
+                <ScalarProperty Name="position" ColumnName="position" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="Presence" ColumnName="Presence" />
+                <ScalarProperty Name="avatarUrl" ColumnName="avatarUrl" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="numberPhone" ColumnName="numberPhone" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Groups">
+            <EntityTypeMapping TypeName="tupetooModel.Group">
+              <MappingFragment StoreEntitySet="Group">
+                <ScalarProperty Name="fk_parentName" ColumnName="fk_parentName" />
+                <ScalarProperty Name="position" ColumnName="position" />
+                <ScalarProperty Name="fk_ContactCretor" ColumnName="fk_ContactCretor" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="subject" ColumnName="subject" />
+                <ScalarProperty Name="groupName" ColumnName="groupName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Group_Contact">
+            <EntityTypeMapping TypeName="tupetooModel.Group_Contact">
+              <MappingFragment StoreEntitySet="Group_Contact">
+                <ScalarProperty Name="levelAccess" ColumnName="levelAccess" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="fkGroup" ColumnName="fkGroup" />
+                <ScalarProperty Name="Fk_Contact" ColumnName="Fk_Contact" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Messages">
+            <EntityTypeMapping TypeName="tupetooModel.Message">
+              <MappingFragment StoreEntitySet="Message">
+                <ScalarProperty Name="fk_Contact_receiver" ColumnName="fk_Contact_receiver" />
+                <ScalarProperty Name="fkGroup" ColumnName="fkGroup" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="fk_Contact_sender" ColumnName="fk_Contact_sender" />
+                <ScalarProperty Name="text" ColumnName="text" />
+                <ScalarProperty Name="url" ColumnName="url" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LikeCommands">
+            <EntityTypeMapping TypeName="tupetooModel.LikeCommand">
+              <MappingFragment StoreEntitySet="LikeCommand">
+                <ScalarProperty Name="isLike" ColumnName="isLike" />
+                <ScalarProperty Name="fk_userName" ColumnName="fk_userName" />
+                <ScalarProperty Name="fk_message" ColumnName="fk_message" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

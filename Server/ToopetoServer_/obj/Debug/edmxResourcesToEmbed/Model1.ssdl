@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ToopetoModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="ToopetoModelStoreContainer">
+    <EntitySet Name="EntityR" EntityType="ToopetoModel.Store.EntityR" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="friends" EntityType="ToopetoModel.Store.friends" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Message" EntityType="ToopetoModel.Store.Message" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Room" EntityType="ToopetoModel.Store.Room" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Room_User" EntityType="ToopetoModel.Store.Room_User" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="User" EntityType="ToopetoModel.Store.User" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_friends_User" Association="ToopetoModel.Store.FK_friends_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="friends" EntitySet="friends" />
+    </AssociationSet>
+    <AssociationSet Name="FK_friends_User1" Association="ToopetoModel.Store.FK_friends_User1">
+      <End Role="User" EntitySet="User" />
+      <End Role="friends" EntitySet="friends" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Message_EntityR" Association="ToopetoModel.Store.FK_Message_EntityR">
+      <End Role="EntityR" EntitySet="EntityR" />
+      <End Role="Message" EntitySet="Message" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Room_EntityR" Association="ToopetoModel.Store.FK_Room_EntityR">
+      <End Role="EntityR" EntitySet="EntityR" />
+      <End Role="Room" EntitySet="Room" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Room_User_Room" Association="ToopetoModel.Store.FK_Room_User_Room">
+      <End Role="Room" EntitySet="Room" />
+      <End Role="Room_User" EntitySet="Room_User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Room_User_User" Association="ToopetoModel.Store.FK_Room_User_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Room_User" EntitySet="Room_User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_EntityR" Association="ToopetoModel.Store.FK_User_EntityR">
+      <End Role="EntityR" EntitySet="EntityR" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="EntityR">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="friends">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Fk_User1" Type="int" />
+    <Property Name="Fk_User2" Type="int" />
+  </EntityType>
+  <EntityType Name="Message">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="type" Type="tinyint" />
+    <Property Name="url" Type="nchar" MaxLength="50" />
+    <Property Name="text" Type="nvarchar(max)" />
+    <Property Name="EntityR_fk" Type="int" />
+  </EntityType>
+  <EntityType Name="Room">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="roomName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Room_User">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Fk_Room" Type="int" />
+    <Property Name="Fk_User" Type="int" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="userName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_friends_User">
+    <End Role="User" Type="ToopetoModel.Store.User" Multiplicity="0..1" />
+    <End Role="friends" Type="ToopetoModel.Store.friends" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="friends">
+        <PropertyRef Name="Fk_User1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_friends_User1">
+    <End Role="User" Type="ToopetoModel.Store.User" Multiplicity="0..1" />
+    <End Role="friends" Type="ToopetoModel.Store.friends" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="friends">
+        <PropertyRef Name="Fk_User2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Message_EntityR">
+    <End Role="EntityR" Type="ToopetoModel.Store.EntityR" Multiplicity="0..1" />
+    <End Role="Message" Type="ToopetoModel.Store.Message" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntityR">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Message">
+        <PropertyRef Name="EntityR_fk" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Room_EntityR">
+    <End Role="EntityR" Type="ToopetoModel.Store.EntityR" Multiplicity="1" />
+    <End Role="Room" Type="ToopetoModel.Store.Room" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="EntityR">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Room">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Room_User_Room">
+    <End Role="Room" Type="ToopetoModel.Store.Room" Multiplicity="0..1" />
+    <End Role="Room_User" Type="ToopetoModel.Store.Room_User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Room">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Room_User">
+        <PropertyRef Name="Fk_Room" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Room_User_User">
+    <End Role="User" Type="ToopetoModel.Store.User" Multiplicity="0..1" />
+    <End Role="Room_User" Type="ToopetoModel.Store.Room_User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Room_User">
+        <PropertyRef Name="Fk_User" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_EntityR">
+    <End Role="EntityR" Type="ToopetoModel.Store.EntityR" Multiplicity="1" />
+    <End Role="User" Type="ToopetoModel.Store.User" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="EntityR">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

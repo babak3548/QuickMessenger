@@ -1,0 +1,13 @@
+E:\toopeto\TcpServer-src\UnitTestTcpServer\bin\Debug\UnitTestTcpServer.dll
+E:\toopeto\TcpServer-src\UnitTestTcpServer\bin\Debug\UnitTestTcpServer.pdb
+E:\toopeto\TcpServer-src\UnitTestTcpServer\bin\Debug\tcpServerTester.exe
+E:\toopeto\TcpServer-src\UnitTestTcpServer\bin\Debug\EntityFramework.dll
+E:\toopeto\TcpServer-src\UnitTestTcpServer\bin\Debug\tcpServer.dll
+E:\toopeto\TcpServer-src\UnitTestTcpServer\bin\Debug\AnarSoft.Utility.dll
+E:\toopeto\TcpServer-src\UnitTestTcpServer\bin\Debug\tcpServerTester.pdb
+E:\toopeto\TcpServer-src\UnitTestTcpServer\bin\Debug\EntityFramework.xml
+E:\toopeto\TcpServer-src\UnitTestTcpServer\bin\Debug\tcpServer.pdb
+E:\toopeto\TcpServer-src\UnitTestTcpServer\bin\Debug\AnarSoft.Utility.pdb
+E:\toopeto\TcpServer-src\UnitTestTcpServer\obj\Debug\UnitTestTcpServer.csprojResolveAssemblyReference.cache
+E:\toopeto\TcpServer-src\UnitTestTcpServer\obj\Debug\UnitTestTcpServer.dll
+E:\toopeto\TcpServer-src\UnitTestTcpServer\obj\Debug\UnitTestTcpServer.pdb

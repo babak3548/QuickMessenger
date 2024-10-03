@@ -1,0 +1,7 @@
+E:\toopeto\TcpServer-src\tcpServer\bin\Release\tcpServer.dll
+E:\toopeto\TcpServer-src\tcpServer\bin\Release\tcpServer.pdb
+E:\toopeto\TcpServer-src\tcpServer\obj\Release\tcpServer.csprojResolveAssemblyReference.cache
+E:\toopeto\TcpServer-src\tcpServer\obj\Release\tcpServer.TcpServer.resources
+E:\toopeto\TcpServer-src\tcpServer\obj\Release\tcpServer.csproj.GenerateResource.Cache
+E:\toopeto\TcpServer-src\tcpServer\obj\Release\tcpServer.dll
+E:\toopeto\TcpServer-src\tcpServer\obj\Release\tcpServer.pdb
