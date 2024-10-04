@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="mtm_accept_cert">ارتباط با سرور</string>
+    <string name="mtm_accept_servername">وصل شدن به سرور را می پذیرم</string>
+    <string name="mtm_cert_details">جزییات سرور</string>
+    <string name="mtm_cert_expired">تاریخ سرور آپدیت نیست</string>
+    <string name="mtm_connect_anyway">آیا می خواهید به سرور وصل شوید</string>
+    <string name="mtm_decision_abort"> نمی خوام</string>
+    <string name="mtm_decision_always">همیشه</string>
+    <string name="mtm_decision_once">این بار</string>
+    <string name="mtm_hostname_mismatch"> \"%s\".  گواهی :</string>
+    <string name="mtm_notification">گواهی وصل شدن به سرور</string>
+    <string name="mtm_trust_anchor"> </string>
+
+
+</resources>

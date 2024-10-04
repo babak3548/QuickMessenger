@@ -1,0 +1,5 @@
+include ':libs:MemorizingTrustManager', ':gson-2.2.4', ':retrofit-1.9.0'
+include ':libs:minidns'
+include ':libs:openpgp-api-lib'
+
+rootProject.name = 'Conversations'

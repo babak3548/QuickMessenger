@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="otr4j-0.21">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.java/otr4j/0.21/b1a40f6d59cc331422255392e3bc1a0983f1bfc5/otr4j-0.21.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.java/otr4j/0.21/9e9f220033b71cebc0e5a6389154229fb2d276a/otr4j-0.21-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

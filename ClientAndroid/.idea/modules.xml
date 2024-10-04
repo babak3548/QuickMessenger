@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Conversations.iml" filepath="$PROJECT_DIR$/Conversations.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libs/MemorizingTrustManager/MemorizingTrustManager.iml" filepath="$PROJECT_DIR$/libs/MemorizingTrustManager/MemorizingTrustManager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gson-2.2.4/gson-2.2.4.iml" filepath="$PROJECT_DIR$/gson-2.2.4/gson-2.2.4.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libs/minidns/minidns.iml" filepath="$PROJECT_DIR$/libs/minidns/minidns.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libs/openpgp-api-lib/openpgp-api-lib.iml" filepath="$PROJECT_DIR$/libs/openpgp-api-lib/openpgp-api-lib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/retrofit-1.9.0/retrofit-1.9.0.iml" filepath="$PROJECT_DIR$/retrofit-1.9.0/retrofit-1.9.0.iml" />
+    </modules>
+  </component>
+</project>
+

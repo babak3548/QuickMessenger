@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="E:\workspace\toptoo\gson-2.2.4\gson-2.2.4.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="973e832af433b44c3ed11c426f2f390b29f3f3f8">
+        <dex dex="E:\workspace\toptoo\build\intermediates\pre-dexed\debug\gson-2.2.4-588f37e809819b5b73d36d4e9a3b504155666918.jar" />
+    </item>
+    <item
+        jar="E:\workspace\toptoo\libs\minidns\build\libs\minidns.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="8486851865235198c3e30a83d0048d10ee6a14da">
+        <dex dex="E:\workspace\toptoo\build\intermediates\pre-dexed\debug\minidns-d1dfaa02d4ed7b303f2240c3c949eb4f96ed3c43.jar" />
+    </item>
+    <item
+        jar="E:\workspace\toptoo\retrofit-1.9.0\retrofit-1.9.0.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="a681c044244d9fc375198588297a39ba78028423">
+        <dex dex="E:\workspace\toptoo\build\intermediates\pre-dexed\debug\retrofit-1.9.0-07ff1dfc096bb90384eb10ab188871815b7225eb.jar" />
+    </item>
+    <item
+        jar="E:\workspace\toptoo\build\intermediates\exploded-aar\Conversations.libs\MemorizingTrustManager\unspecified\classes.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="f5be2b305a0d644c1e1bcff766299718c97951e0">
+        <dex dex="E:\workspace\toptoo\build\intermediates\pre-dexed\debug\classes-38886fd4f0a8438a2b7bf1b8c1aef8f44fb8f3fc.jar" />
+    </item>
+    <item
+        jar="E:\workspace\toptoo\build\intermediates\exploded-aar\Conversations.libs\openpgp-api-lib\unspecified\classes.jar"
+        jumboMode="false"
+        revision="19.1.0"
+        sha1="f3aaafa3989b9bf517f42ca7b647254b4d12bc39">
+        <dex dex="E:\workspace\toptoo\build\intermediates\pre-dexed\debug\classes-54b248090360f471a75171f5db9b114c410399f5.jar" />
+    </item>
+
+</items>

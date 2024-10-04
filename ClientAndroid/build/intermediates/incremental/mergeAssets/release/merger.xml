@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="unspecified"><source path="E:\workspace\toptoo\build\intermediates\exploded-aar\Conversations.libs\MemorizingTrustManager\unspecified\assets"/></dataSet><dataSet config="unspecified"><source path="E:\workspace\toptoo\build\intermediates\exploded-aar\Conversations.libs\openpgp-api-lib\unspecified\assets"/></dataSet><dataSet config="main"><source path="E:\workspace\toptoo\src\main\assets"/></dataSet><dataSet config="release"><source path="E:\workspace\toptoo\src\release\assets"/></dataSet></merger>
